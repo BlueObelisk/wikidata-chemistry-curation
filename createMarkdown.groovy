@@ -55,10 +55,26 @@ lines.each { String line ->
     def instruction = new XmlSlurper().parseText(line)
     def srcLines = new File("sparql/${instruction.text()}.verbatim.md").readLines()
     srcLines.each { String srcLine -> println srcLine }
-  } else if (line.startsWith("<out>")) {
+  } else if (line.startsWith("<out")) {
     def instruction = new XmlSlurper().parseText(line)
     def srcLines = new File("sparql/${instruction.text()}.out").readLines()
-    srcLines.each { String srcLine -> println srcLine }
+    def recordsProcessed = 0
+    def recordsToOutput = 10000 // okay, so if the output has more, it will truncate them nevertheless #TODO
+    if (!instruction.@limit.isEmpty())
+      recordsToOutput = Integer.parseInt(instruction.@limit.text())
+    srcLines.each { String srcLine ->
+      if (srcLine.contains("<tr")) {
+        if (recordsProcessed == recordsToOutput) {
+          def message = "<a href=\"sparql/${instruction.text()}.code.html\">sparql/${instruction.text()}.rq</a>"
+          println "  <tr><td colspan=\"2\">${message}</td></tr>"
+          println "</table>"
+        }
+        recordsProcessed += 1
+      }
+      if (recordsProcessed < recordsToOutput) {
+        println srcLine
+      }
+    }
   } else if (line.startsWith("<iframe>")) {
     def instruction = new XmlSlurper().parseText(line)
     def srcLines = new File("sparql/${instruction.text()}.iframe.md").readLines()

@@ -1,6 +1,6 @@
 # Wikidata-based curation approaches
 
-# Polymers without CXSMILES
+## Polymers without CXSMILES
 
 Many polymers can have a CXSMILES property and the following query lists those that do not
 have this property:
@@ -17,4 +17,18 @@ SELECT ?cmp ?cmpLabel WHERE {
 
 This returns values like this:
 
-<out limit="5" />
+<table>
+  <tr>
+    <td><b>cmp</b></td>
+  </tr>
+  <tr>
+    <td><a href="https://tools.wmflabs.org/scholia/Q145126">polyisoprene</a> (<a href="http://www.wikidata.org/entity/Q145126">edit</a>)</td>
+  </tr>
+  <tr>
+    <td><a href="https://tools.wmflabs.org/scholia/Q146415">Styrene-acrylonitrile resin</a> (<a href="http://www.wikidata.org/entity/Q146415">edit</a>)</td>
+  </tr>
+  <tr>
+    <td><a href="https://tools.wmflabs.org/scholia/Q408014">chondroitin sulfate</a> (<a href="http://www.wikidata.org/entity/Q408014">edit</a>)</td>
+  </tr>
+  <tr><td colspan="2"><a href="sparql/polymersWithoutCXSMILES.code.html">sparql/polymersWithoutCXSMILES.rq</a></td></tr>
+</table>
