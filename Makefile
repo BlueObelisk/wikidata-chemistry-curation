@@ -1,10 +1,12 @@
-SOURCES := ${ shell ls -1 *.i.md | grep -v indexList.i.md }
-TARGETS := intro.md indexList.md
+SOURCES := ${shell ls -1 *.i.md | grep -v indexList.i.md }
+TARGETS := ${shell ls -1 *.i.md | grep -v indexList.i.md | sed -e 's/.i.md/.md/' | grep -v index.md }
 METAS := references.dat toc.txt indexList.i.md sections.txt
 
 SUBDIRS := sparql
 
 all: ${SUBDIRS} ${METAS} ${TARGETS} index.md
+	@echo "sources: ${SOURCES}"
+	@echo "targets: ${TARGETS}"
 	@mv ${TARGETS} docs/
 	@cp sparql/*.code.md docs/sparql/
 

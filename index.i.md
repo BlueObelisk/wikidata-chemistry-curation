@@ -1,4 +1,4 @@
-# Curatin chemistry in Wikidata
+# Curating chemistry in Wikidata
 
 © 2025 The Authors
 

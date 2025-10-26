@@ -1,0 +1,5 @@
+SELECT ?cmp ?cmpLabel WHERE {
+  ?cmp wdt:P31 wd:Q81163 .
+  MINUS { ?cmp wdt:P10718 [] }
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
+}
