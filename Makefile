@@ -1,5 +1,5 @@
 SOURCES := ${shell ls -1 *.i.md | grep -v indexList.i.md }
-TARGETS := ${shell ls -1 *.i.md | grep -v indexList.i.md | sed -e 's/.i.md/.md/' | grep -v index.md }
+TARGETS := ${shell ls -1 *.i.md | sed -e 's/.i.md/.md/' | grep -v index.md }
 METAS := references.dat toc.txt indexList.i.md sections.txt
 
 SUBDIRS := sparql
