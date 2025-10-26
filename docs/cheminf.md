@@ -3,8 +3,8 @@
 ## Chemistry Development Kit-based
 
 Because SPARQL makes it very easy to extract data from Wikidata, it makes it easy to find
-inconsistencies. For example, we can download all SMILES strings and parse the SMILES with
-a library like the Chemistry Development Kit [<a href="#citeref1">1</a>], for example,
+inconsistencies. For example, we can download all <a name="tp1">SMILES</a> strings and parse the SMILES with
+a library like the <a name="tp2">Chemistry Development Kit</a> [<a href="#citeref1">1</a>], for example,
 using Bacting [<a href="#citeref2">2</a>].
 
 ### Unparsable SMILES

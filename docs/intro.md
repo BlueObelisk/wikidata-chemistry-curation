@@ -3,7 +3,7 @@
 [Wikidata](https://wikidata.org/) is a useful resource in the linked data network [<a href="#citeref1">1</a>].
 It has knowledge about more than 1.3 million chemical compounds, exceeding the number of compounds in Wikipedia.
 Because every Wikipedia article has a matching Wikidata record, Wikipedia should be a subset. Several efforts
-have taken place to add chemistry to Wikdiata and some of that has been published.
+have taken place to add chemistry to Wikidata and some of that has been published.
 For example, Waagmeester, Stupp, Burgstaller-Muehlbacher, and others wrote a bot to add relevant life science
 knowledge to Wikidata, including small compounds [<a href="#citeref2">2</a>]. Rutz and others use Wikidata for
 natural products [<a href="#citeref3">3</a>], and Willighagen and others recently wrote up an extension of

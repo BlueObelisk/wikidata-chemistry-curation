@@ -3,10 +3,10 @@
 ## Wikidata items without SMILES
 
 Wikipedia has a separate chemistry community, and while some Wikidata chemistry content is visible on
-Wikipedia, it also happens regularly that Wikipedia has a SMILES for a chemical compound, where Wikidata
+<a name="tp1">Wikipedia</a>, it also happens regularly that Wikipedia has a <a name="tp2">SMILES</a> for a chemical compound, where Wikidata
 does not. DBpedia helps here [<a href="#citeref1">1</a>].
 
-The following SPARQL query finds ten thousand (the default limit in DBpedia) Wikipedia pages with 
+The following SPARQL query finds ten thousand (the default limit in <a name="tp3">DBpedia</a>) Wikipedia pages with 
 a `ChemBox` and checks for those if Wikidata has a SMILES:
 
 **SPARQL** [sparql/missingSMILES.rq](sparql/missingSMILES.code.html) ([run](https://query.wikidata.org/embed.html#PREFIX%20dbpedia2%3A%20%3Chttp%3A%2F%2Fdbpedia.org%2Fproperty%2F%3E%0A%0ASELECT%20%3Fs%20%3Farticle%20%3Fitem%20%3FitemLabel%20WITH%20%7B%0A%20%20SELECT%20DISTINCT%20%3Fs%20%3Farticle%20WHERE%20%7B%0A%20%20%20%20SERVICE%20%3Chttps%3A%2F%2Fdbpedia.org%2Fsparql%3E%20%7B%0A%20%20%20%20%20%20%3Fs%20dbpedia2%3AwikiPageUsesTemplate%20%3Chttp%3A%2F%2Fdbpedia.org%2Fresource%2FTemplate%3AChembox%3E.%0A%20%20%20%20%20%20%3Farticle_db%20foaf%3AprimaryTopic%20%3Fs.%0A%20%20%20%20%7D%0A%20%20%20%20BIND%20%28IRI%28REPLACE%28STR%28%3Farticle_db%29%2C%20%22http%3A%2F%2F%22%2C%20%22https%3A%2F%2F%22%2C%20%22i%22%29%29%20AS%20%3Farticle%29%0A%20%20%7D%0A%7D%20AS%20%25DBPEDIA%20WITH%20%7B%0A%20%20SELECT%20DISTINCT%20%3Fs%20%3Farticle%20%3Fitem%20WHERE%20%7B%0A%20%20%20%20INCLUDE%20%25DBPEDIA%0A%20%20%20%20%3Farticle%20schema%3Aabout%20%3Fitem%20.%0A%20%20%20%20MINUS%20%7B%20%3Fitem%20wdt%3AP233%20%5B%5D%20%7D%0A%20%20%20%20MINUS%20%7B%20%3Fitem%20wdt%3AP2017%20%5B%5D%20%7D%0A%20%20%20%20MINUS%20%7B%20%3Fitem%20wdt%3AP10718%20%5B%5D%20%7D%0A%20%20%7D%0A%7D%20AS%20%25CHEMICALS%20WHERE%20%7B%0A%20%20INCLUDE%20%25CHEMICALS%0A%20%20VALUES%20%3Fchemicals%20%7B%20wd%3AQ113145171%20wd%3AQ59199015%20%7D%0A%20%20%3Fitem%20wdt%3AP31%20%3Fchemicals.%0A%20%20SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22%5BAUTO_LANGUAGE%5D%2Cen%22.%20%7D%0A%7D%0A), [edit](https://query.wikidata.org/#PREFIX%20dbpedia2%3A%20%3Chttp%3A%2F%2Fdbpedia.org%2Fproperty%2F%3E%0A%0ASELECT%20%3Fs%20%3Farticle%20%3Fitem%20%3FitemLabel%20WITH%20%7B%0A%20%20SELECT%20DISTINCT%20%3Fs%20%3Farticle%20WHERE%20%7B%0A%20%20%20%20SERVICE%20%3Chttps%3A%2F%2Fdbpedia.org%2Fsparql%3E%20%7B%0A%20%20%20%20%20%20%3Fs%20dbpedia2%3AwikiPageUsesTemplate%20%3Chttp%3A%2F%2Fdbpedia.org%2Fresource%2FTemplate%3AChembox%3E.%0A%20%20%20%20%20%20%3Farticle_db%20foaf%3AprimaryTopic%20%3Fs.%0A%20%20%20%20%7D%0A%20%20%20%20BIND%20%28IRI%28REPLACE%28STR%28%3Farticle_db%29%2C%20%22http%3A%2F%2F%22%2C%20%22https%3A%2F%2F%22%2C%20%22i%22%29%29%20AS%20%3Farticle%29%0A%20%20%7D%0A%7D%20AS%20%25DBPEDIA%20WITH%20%7B%0A%20%20SELECT%20DISTINCT%20%3Fs%20%3Farticle%20%3Fitem%20WHERE%20%7B%0A%20%20%20%20INCLUDE%20%25DBPEDIA%0A%20%20%20%20%3Farticle%20schema%3Aabout%20%3Fitem%20.%0A%20%20%20%20MINUS%20%7B%20%3Fitem%20wdt%3AP233%20%5B%5D%20%7D%0A%20%20%20%20MINUS%20%7B%20%3Fitem%20wdt%3AP2017%20%5B%5D%20%7D%0A%20%20%20%20MINUS%20%7B%20%3Fitem%20wdt%3AP10718%20%5B%5D%20%7D%0A%20%20%7D%0A%7D%20AS%20%25CHEMICALS%20WHERE%20%7B%0A%20%20INCLUDE%20%25CHEMICALS%0A%20%20VALUES%20%3Fchemicals%20%7B%20wd%3AQ113145171%20wd%3AQ59199015%20%7D%0A%20%20%3Fitem%20wdt%3AP31%20%3Fchemicals.%0A%20%20SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22%5BAUTO_LANGUAGE%5D%2Cen%22.%20%7D%0A%7D%0A))
@@ -65,7 +65,7 @@ The results look like this:
 
 ## Polymers without CXSMILES
 
-Many polymers can have a CXSMILES property and the following query lists those that do not
+Many <a name="tp4">polymers</a> can have a <a name="tp5">CXSMILES</a> property and the following query lists those that do not
 have this property:
 
 **SPARQL** [sparql/polymersWithoutCXSMILES.rq](sparql/polymersWithoutCXSMILES.code.html) ([run](https://query.wikidata.org/embed.html#SELECT%20%3Fcmp%20%3FcmpLabel%20WHERE%20%7B%0A%20%20%3Fcmp%20wdt%3AP31%20wd%3AQ81163%20.%0A%20%20MINUS%20%7B%20%3Fcmp%20wdt%3AP10718%20%5B%5D%20%7D%0A%20%20SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22%5BAUTO_LANGUAGE%5D%2Cen%22.%20%7D%0A%7D%0A), [edit](https://query.wikidata.org/#SELECT%20%3Fcmp%20%3FcmpLabel%20WHERE%20%7B%0A%20%20%3Fcmp%20wdt%3AP31%20wd%3AQ81163%20.%0A%20%20MINUS%20%7B%20%3Fcmp%20wdt%3AP10718%20%5B%5D%20%7D%0A%20%20SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22%5BAUTO_LANGUAGE%5D%2Cen%22.%20%7D%0A%7D%0A))
@@ -98,7 +98,7 @@ This returns values like this:
 
 ## Functional groups without CXSMILES
 
-We can do the same thing for functional groups:
+We can do the same thing for <a name="tp6">functional groups</a>:
 
 **SPARQL** [sparql/functionalGroupsWithoutCXSMILES.rq](sparql/functionalGroupsWithoutCXSMILES.code.html) ([run](https://query.wikidata.org/embed.html#SELECT%20%3Ffg%20%3FfgLabel%20%3Fcxsmiles%20WHERE%20%7B%0A%20%20%3Ffg%20wdt%3AP31%2Fwdt%3AP279*%20wd%3AQ170409%20.%0A%20%20MINUS%20%7B%20%3Ffg%20wdt%3AP10718%20%3Fcxsmiles%20%7D%0A%20%20SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22%5BAUTO_LANGUAGE%5D%2Cmul%2Cen%22.%20%7D%0A%7D%0A), [edit](https://query.wikidata.org/#SELECT%20%3Ffg%20%3FfgLabel%20%3Fcxsmiles%20WHERE%20%7B%0A%20%20%3Ffg%20wdt%3AP31%2Fwdt%3AP279*%20wd%3AQ170409%20.%0A%20%20MINUS%20%7B%20%3Ffg%20wdt%3AP10718%20%3Fcxsmiles%20%7D%0A%20%20SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22%5BAUTO_LANGUAGE%5D%2Cmul%2Cen%22.%20%7D%0A%7D%0A))
 
