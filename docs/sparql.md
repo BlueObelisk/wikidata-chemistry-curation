@@ -32,3 +32,39 @@ This returns values like this:
   </tr>
   <tr><td colspan="2"><a href="sparql/polymersWithoutCXSMILES.code.html">sparql/polymersWithoutCXSMILES.rq</a></td></tr>
 </table>
+
+## Functional groups without CXSMILES
+
+We can do the same thing for functional groups:
+
+**SPARQL** [sparql/functionalGroupsWithoutCXSMILES.rq](sparql/functionalGroupsWithoutCXSMILES.code.html) ([run](https://query.wikidata.org/embed.html#SELECT%20%3Ffg%20%3FfgLabel%20%3Fcxsmiles%20WHERE%20%7B%0A%20%20%3Ffg%20wdt%3AP31%2Fwdt%3AP279*%20wd%3AQ170409%20.%0A%20%20MINUS%20%7B%20%3Ffg%20wdt%3AP10718%20%3Fcxsmiles%20%7D%0A%20%20SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22%5BAUTO_LANGUAGE%5D%2Cmul%2Cen%22.%20%7D%0A%7D%0A), [edit](https://query.wikidata.org/#SELECT%20%3Ffg%20%3FfgLabel%20%3Fcxsmiles%20WHERE%20%7B%0A%20%20%3Ffg%20wdt%3AP31%2Fwdt%3AP279*%20wd%3AQ170409%20.%0A%20%20MINUS%20%7B%20%3Ffg%20wdt%3AP10718%20%3Fcxsmiles%20%7D%0A%20%20SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22%5BAUTO_LANGUAGE%5D%2Cmul%2Cen%22.%20%7D%0A%7D%0A))
+
+```sparql
+SELECT ?fg ?fgLabel ?cxsmiles WHERE {
+  ?fg wdt:P31/wdt:P279* wd:Q170409 .
+  MINUS { ?fg wdt:P10718 ?cxsmiles }
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],mul,en". }
+}
+```
+
+Here too, the list provides a list of curation opportunities:
+
+<table>
+  <tr>
+    <td><b>fg</b></td>
+    <td><b>cxsmiles</b></td>
+  </tr>
+  <tr>
+    <td><a href="https://tools.wmflabs.org/scholia/Q2633793">acetamido group</a> (<a href="http://www.wikidata.org/entity/Q2633793">edit</a>)</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><a href="https://tools.wmflabs.org/scholia/Q2633806">peroxyacetyl group</a> (<a href="http://www.wikidata.org/entity/Q2633806">edit</a>)</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><a href="https://tools.wmflabs.org/scholia/Q2896782">benzhydryl</a> (<a href="http://www.wikidata.org/entity/Q2896782">edit</a>)</td>
+    <td></td>
+  </tr>
+  <tr><td colspan="2"><a href="sparql/functionalGroupsWithoutCXSMILES.code.html">sparql/functionalGroupsWithoutCXSMILES.rq</a></td></tr>
+</table>

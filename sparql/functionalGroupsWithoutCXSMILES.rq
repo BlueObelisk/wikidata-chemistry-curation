@@ -1,0 +1,5 @@
+SELECT ?fg ?fgLabel ?cxsmiles WHERE {
+  ?fg wdt:P31/wdt:P279* wd:Q170409 .
+  MINUS { ?fg wdt:P10718 ?cxsmiles }
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],mul,en". }
+}

@@ -10,3 +10,13 @@ have this property:
 This returns values like this:
 
 <out limit="5">polymersWithoutCXSMILES</out>
+
+## Functional groups without CXSMILES
+
+We can do the same thing for functional groups:
+
+<sparql>functionalGroupsWithoutCXSMILES</sparql>
+
+Here too, the list provides a list of curation opportunities:
+
+<out limit="5">functionalGroupsWithoutCXSMILES</out>
