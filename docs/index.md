@@ -18,6 +18,9 @@ Wishes, comments, and pull requests can be send to
 3.2. [Polymers without CXSMILES](sparql.md#polymers-without-cxsmiles) <br />
 3.3. [Functional groups without CXSMILES](sparql.md#functional-groups-without-cxsmiles) <br />
 4. [Cheminformatics-based curation](cheminf.md) <br />
+4.1. [Chemistry Development Kit-based](cheminf.md#chemistry-development-kit-based) <br />
+4.1.1. [Unparsable SMILES](cheminf.md#unparsable-smiles) <br />
+4.2. [RDkit-based](cheminf.md#rdkit-based) <br />
 5. [Adding additional information](adding.md) <br />
 5.1. [Adding melting points](adding.md#adding-melting-points) <br />
 
