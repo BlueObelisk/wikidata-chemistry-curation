@@ -1,0 +1,64 @@
+// Copyright (c) 2019  Egon Willighagen <egon.willighagen@gmail.com>
+//
+// GPL v3
+
+@Grab(group='io.github.egonw.bacting', module='managers-rdf', version='0.0.10')
+@Grab(group='io.github.egonw.bacting', module='managers-ui', version='0.0.10')
+
+bioclipse = new net.bioclipse.managers.BioclipseManager(".");
+rdf = new net.bioclipse.managers.RDFManager(".");
+
+inFile = args[0];
+
+sparql = new File(inFile).text
+
+if (bioclipse.isOnline()) {
+  resultsData = bioclipse.sparqlRemote(
+    "https://query.wikidata.org/bigdata/namespace/wdq/sparql", sparql
+  )
+  results = rdf.processSPARQLXML(resultsData, sparql)
+}
+
+// make output
+colNames = results.columnNames
+colCount = colNames.size()
+
+columnLabels = new ArrayList<String>()
+labelCols = new HashMap<String,String>()
+for (String name : colNames) {
+  if (name.endsWith("Label")) {
+    label = name.substring(0,name.indexOf("Label"))
+    if (columnLabels.contains(label)) {
+      labelCols.put(label, name)
+    }
+  } else {
+    columnLabels.add(name)
+  }
+}
+
+println "<table>"
+println "  <tr>"
+for (String label : columnLabels) {
+  println "    <td><b>${label}</b></td>"
+}
+println "  </tr>"
+
+for (i=1;i<=results.rowCount;i++) {
+  println "  <tr>"
+  for (String label : columnLabels) {
+    if (labelCols.containsKey(label)) {
+      // okay, we have a label, use that
+      wikidata = label
+      label = labelCols.get(label)
+      qidURL = results.get(i, wikidata)
+      qid = qidURL.substring(31)
+      println "    <td><a href=\"https://tools.wmflabs.org/scholia/$qid\">${results.get(i, label)}</a> (<a href=\"$qidURL\">edit</a>)</td>"
+    } else {
+      label = results.get(i, label)
+      if (label == null) label = ""
+      println "    <td>$label</td>"
+    }
+  }
+  println "  </tr>"
+}
+println "</table>"
