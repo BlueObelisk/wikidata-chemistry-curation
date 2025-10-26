@@ -1,4 +1,4 @@
-SOURCES := intro.i.md index.i.md
+SOURCES := ${ shell ls -1 *.i.md | grep -v indexList.i.md }
 TARGETS := intro.md indexList.md
 METAS := references.dat toc.txt indexList.i.md sections.txt
 

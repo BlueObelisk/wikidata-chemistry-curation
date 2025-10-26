@@ -6,6 +6,8 @@
 //
 // it takes one optional argument, which is appended to the output
 
+import groovy.xml.XmlSlurper
+
 chapterCounters = new HashMap<String,String>();
 chapterCounter = 0
 appendixCounter = 0

@@ -1,18 +1,13 @@
-# Useful Queries for Journal Editors
+# Curatin chemistry in Wikidata
 
-
-**Egon L. Willighagen**
-
-© 2020 The Authors
+© 2025 The Authors
 
 License: CC-BY-SA 4.0 International
 
 This book is written in Markdown with additional instructions that are preprocessed.
-This [README](https://github.com/jcheminform/useful-queries/blob/master/README.md)
-contains more information.
 
 Wishes, comments, and pull requests can be send to
-[this GitHub repository](https://github.com/jcheminform/useful-queries/).
+[this GitHub repository](https://github.com/BlueObelisk/wikidata-chemistry-curation).
 
 ## Contents
 
