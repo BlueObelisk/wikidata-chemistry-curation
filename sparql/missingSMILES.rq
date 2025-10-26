@@ -1,0 +1,24 @@
+PREFIX dbpedia2: <http://dbpedia.org/property/>
+
+SELECT ?s ?article ?item ?itemLabel WITH {
+  SELECT DISTINCT ?s ?article WHERE {
+    SERVICE <https://dbpedia.org/sparql> {
+      ?s dbpedia2:wikiPageUsesTemplate <http://dbpedia.org/resource/Template:Chembox>.
+      ?article_db foaf:primaryTopic ?s.
+    }
+    BIND (IRI(REPLACE(STR(?article_db), "http://", "https://", "i")) AS ?article)
+  }
+} AS %DBPEDIA WITH {
+  SELECT DISTINCT ?s ?article ?item WHERE {
+    INCLUDE %DBPEDIA
+    ?article schema:about ?item .
+    MINUS { ?item wdt:P233 [] }
+    MINUS { ?item wdt:P2017 [] }
+    MINUS { ?item wdt:P10718 [] }
+  }
+} AS %CHEMICALS WHERE {
+  INCLUDE %CHEMICALS
+  VALUES ?chemicals { wd:Q113145171 wd:Q59199015 }
+  ?item wdt:P31 ?chemicals.
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
+}

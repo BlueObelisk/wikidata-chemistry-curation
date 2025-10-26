@@ -1,5 +1,68 @@
 # Wikidata-based curation approaches
 
+## Wikidata items without SMILES
+
+Wikipedia has a separate chemistry community, and while some Wikidata chemistry content is visible on
+Wikipedia, it also happens regularly that Wikipedia has a SMILES for a chemical compound, where Wikidata
+does not. DBpedia helps here [<a href="#citeref1">1</a>].
+
+The following SPARQL query finds ten thousand (the default limit in DBpedia) Wikipedia pages with 
+a `ChemBox` and checks for those if Wikidata has a SMILES:
+
+**SPARQL** [sparql/missingSMILES.rq](sparql/missingSMILES.code.html) ([run](https://query.wikidata.org/embed.html#PREFIX%20dbpedia2%3A%20%3Chttp%3A%2F%2Fdbpedia.org%2Fproperty%2F%3E%0A%0ASELECT%20%3Fs%20%3Farticle%20%3Fitem%20%3FitemLabel%20WITH%20%7B%0A%20%20SELECT%20DISTINCT%20%3Fs%20%3Farticle%20WHERE%20%7B%0A%20%20%20%20SERVICE%20%3Chttps%3A%2F%2Fdbpedia.org%2Fsparql%3E%20%7B%0A%20%20%20%20%20%20%3Fs%20dbpedia2%3AwikiPageUsesTemplate%20%3Chttp%3A%2F%2Fdbpedia.org%2Fresource%2FTemplate%3AChembox%3E.%0A%20%20%20%20%20%20%3Farticle_db%20foaf%3AprimaryTopic%20%3Fs.%0A%20%20%20%20%7D%0A%20%20%20%20BIND%20%28IRI%28REPLACE%28STR%28%3Farticle_db%29%2C%20%22http%3A%2F%2F%22%2C%20%22https%3A%2F%2F%22%2C%20%22i%22%29%29%20AS%20%3Farticle%29%0A%20%20%7D%0A%7D%20AS%20%25DBPEDIA%20WITH%20%7B%0A%20%20SELECT%20DISTINCT%20%3Fs%20%3Farticle%20%3Fitem%20WHERE%20%7B%0A%20%20%20%20INCLUDE%20%25DBPEDIA%0A%20%20%20%20%3Farticle%20schema%3Aabout%20%3Fitem%20.%0A%20%20%20%20MINUS%20%7B%20%3Fitem%20wdt%3AP233%20%5B%5D%20%7D%0A%20%20%20%20MINUS%20%7B%20%3Fitem%20wdt%3AP2017%20%5B%5D%20%7D%0A%20%20%20%20MINUS%20%7B%20%3Fitem%20wdt%3AP10718%20%5B%5D%20%7D%0A%20%20%7D%0A%7D%20AS%20%25CHEMICALS%20WHERE%20%7B%0A%20%20INCLUDE%20%25CHEMICALS%0A%20%20VALUES%20%3Fchemicals%20%7B%20wd%3AQ113145171%20wd%3AQ59199015%20%7D%0A%20%20%3Fitem%20wdt%3AP31%20%3Fchemicals.%0A%20%20SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22%5BAUTO_LANGUAGE%5D%2Cen%22.%20%7D%0A%7D%0A), [edit](https://query.wikidata.org/#PREFIX%20dbpedia2%3A%20%3Chttp%3A%2F%2Fdbpedia.org%2Fproperty%2F%3E%0A%0ASELECT%20%3Fs%20%3Farticle%20%3Fitem%20%3FitemLabel%20WITH%20%7B%0A%20%20SELECT%20DISTINCT%20%3Fs%20%3Farticle%20WHERE%20%7B%0A%20%20%20%20SERVICE%20%3Chttps%3A%2F%2Fdbpedia.org%2Fsparql%3E%20%7B%0A%20%20%20%20%20%20%3Fs%20dbpedia2%3AwikiPageUsesTemplate%20%3Chttp%3A%2F%2Fdbpedia.org%2Fresource%2FTemplate%3AChembox%3E.%0A%20%20%20%20%20%20%3Farticle_db%20foaf%3AprimaryTopic%20%3Fs.%0A%20%20%20%20%7D%0A%20%20%20%20BIND%20%28IRI%28REPLACE%28STR%28%3Farticle_db%29%2C%20%22http%3A%2F%2F%22%2C%20%22https%3A%2F%2F%22%2C%20%22i%22%29%29%20AS%20%3Farticle%29%0A%20%20%7D%0A%7D%20AS%20%25DBPEDIA%20WITH%20%7B%0A%20%20SELECT%20DISTINCT%20%3Fs%20%3Farticle%20%3Fitem%20WHERE%20%7B%0A%20%20%20%20INCLUDE%20%25DBPEDIA%0A%20%20%20%20%3Farticle%20schema%3Aabout%20%3Fitem%20.%0A%20%20%20%20MINUS%20%7B%20%3Fitem%20wdt%3AP233%20%5B%5D%20%7D%0A%20%20%20%20MINUS%20%7B%20%3Fitem%20wdt%3AP2017%20%5B%5D%20%7D%0A%20%20%20%20MINUS%20%7B%20%3Fitem%20wdt%3AP10718%20%5B%5D%20%7D%0A%20%20%7D%0A%7D%20AS%20%25CHEMICALS%20WHERE%20%7B%0A%20%20INCLUDE%20%25CHEMICALS%0A%20%20VALUES%20%3Fchemicals%20%7B%20wd%3AQ113145171%20wd%3AQ59199015%20%7D%0A%20%20%3Fitem%20wdt%3AP31%20%3Fchemicals.%0A%20%20SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22%5BAUTO_LANGUAGE%5D%2Cen%22.%20%7D%0A%7D%0A))
+
+```sparql
+PREFIX dbpedia2: <http://dbpedia.org/property/>
+SELECT ?s ?article ?item ?itemLabel WITH {
+  SELECT DISTINCT ?s ?article WHERE {
+    SERVICE <https://dbpedia.org/sparql> {
+      ?s dbpedia2:wikiPageUsesTemplate <http://dbpedia.org/resource/Template:Chembox>.
+      ?article_db foaf:primaryTopic ?s.
+    }
+    BIND (IRI(REPLACE(STR(?article_db), "http://", "https://", "i")) AS ?article)
+  }
+} AS %DBPEDIA WITH {
+  SELECT DISTINCT ?s ?article ?item WHERE {
+    INCLUDE %DBPEDIA
+    ?article schema:about ?item .
+    MINUS { ?item wdt:P233 [] }
+    MINUS { ?item wdt:P2017 [] }
+    MINUS { ?item wdt:P10718 [] }
+  }
+} AS %CHEMICALS WHERE {
+  INCLUDE %CHEMICALS
+  VALUES ?chemicals { wd:Q113145171 wd:Q59199015 }
+  ?item wdt:P31 ?chemicals.
+  SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
+}
+```
+
+The results look like this:
+
+<table>
+  <tr>
+    <td><b>s</b></td>
+    <td><b>article</b></td>
+    <td><b>item</b></td>
+  </tr>
+  <tr>
+    <td>http://dbpedia.org/resource/Manganese_germanide</td>
+    <td>https://en.wikipedia.org/wiki/Manganese_germanide</td>
+    <td><a href="https://tools.wmflabs.org/scholia/Q97933222">Manganese germanide</a> (<a href="http://www.wikidata.org/entity/Q97933222">edit</a>)</td>
+  </tr>
+  <tr>
+    <td>http://dbpedia.org/resource/Potassium_octacyanomolybdate(IV)</td>
+    <td>https://en.wikipedia.org/wiki/Potassium_octacyanomolybdate(IV)</td>
+    <td><a href="https://tools.wmflabs.org/scholia/Q98078085">Potassium octacyanomolybdate(IV)</a> (<a href="http://www.wikidata.org/entity/Q98078085">edit</a>)</td>
+  </tr>
+  <tr>
+    <td>http://dbpedia.org/resource/Vanadium(V)_chloride_chlorimide</td>
+    <td>https://en.wikipedia.org/wiki/Vanadium(V)_chloride_chlorimide</td>
+    <td><a href="https://tools.wmflabs.org/scholia/Q100341984">vanadium(V) chloride chlorimide</a> (<a href="http://www.wikidata.org/entity/Q100341984">edit</a>)</td>
+  </tr>
+  <tr><td colspan="2"><a href="sparql/missingSMILES.code.html">sparql/missingSMILES.rq</a></td></tr>
+</table>
+
 ## Polymers without CXSMILES
 
 Many polymers can have a CXSMILES property and the following query lists those that do not
@@ -68,3 +131,8 @@ Here too, the list provides a list of curation opportunities:
   </tr>
   <tr><td colspan="2"><a href="sparql/functionalGroupsWithoutCXSMILES.code.html">sparql/functionalGroupsWithoutCXSMILES.rq</a></td></tr>
 </table>
+
+## References
+
+1. <a name="citeref1"></a> Auer S, Bizer C, Kobilarov G, Lehmann J, Cyganiak R, Ives Z. DBpedia: A Nucleus for a Web of Open Data. In: The Semantic Web. 2007. p. 722–35.  doi:[10.1007/978-3-540-76298-0_52](https://doi.org/10.1007/978-3-540-76298-0_52) ([Scholia](https://scholia.toolforge.org/doi/10.1007/978-3-540-76298-0_52))
+

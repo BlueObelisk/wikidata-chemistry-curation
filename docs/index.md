@@ -13,8 +13,9 @@ Wishes, comments, and pull requests can be send to
 
 1. [Introduction](intro.md) <br />
 2. [Wikidata-based curation approaches](sparql.md) <br />
-2.1. [Polymers without CXSMILES](sparql.md#polymers-without-cxsmiles) <br />
-2.2. [Functional groups without CXSMILES](sparql.md#functional-groups-without-cxsmiles) <br />
+2.1. [Wikidata items without SMILES](sparql.md#wikidata-items-without-smiles) <br />
+2.2. [Polymers without CXSMILES](sparql.md#polymers-without-cxsmiles) <br />
+2.3. [Functional groups without CXSMILES](sparql.md#functional-groups-without-cxsmiles) <br />
 3. [Cheminformatics-based curation](cheminf.md) <br />
 4. [Adding additional information](adding.md) <br />
 4.1. [Adding melting points](adding.md#adding-melting-points) <br />
