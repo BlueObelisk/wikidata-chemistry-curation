@@ -1,0 +1,24 @@
+# Comparing against databases
+
+Wikidata uses the <topic>chemical graph</topic> as important central criterion and with that the InChI and <topic>InChIKey</topic>:
+a different InChI basically means a different entry. However, because of phenomena like <topic>tautomerism</topic>,
+different Wikidata items can actually have the same InChI. But this makes the InChIKey also a powerful
+tool to compare consistency with other <topic>databases</topic>. The results of such a comparision is useful
+input for manual curation efforts, e.g. when there is an inconsistency, it is not defined where
+the cause of the inconsistency is.
+
+This chapter covers example of these kind of checks.
+
+## Common Chemistry
+
+One systematic comparison that was performed was with the [CAS Common Chemistry](https://commonchemistry.cas.org/)
+database [<cite>Q111987319</cite>]. Using InChIKeys calculated from SMILES, records between <topic>CAS Common Chemistry</topic>
+and Wikidata were compared. If the chemical graph is the same (and thus the InChIKey), then the CAS registry
+number in Wikidata should also match that in CAS Common Chemistry. Furthermore, because Wikidata has sitelinks
+to Wikipedia, the paper also looked at CAS registry numbers in <topic>Wikipedia</topic>. A similar effort was done for
+checking CAS registry numbers in the <topic>HMDB</topic> [<cite>Q112710355</cite>]. The three scripts used to do these
+analyses are provided in the supplementary information.
+
+## References
+
+<references/>
