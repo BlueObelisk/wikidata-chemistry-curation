@@ -16,5 +16,5 @@ allScriptsCompiled: ${CODEFILES}
 
 %.out: %.rq md.*.template preprocess postprocess
 	@echo "doing $@ ..."
-	@groovy4 preprocess $< > $@
-	@groovy4 postprocess $<
+	@groovy preprocess $< > $@
+	@groovy postprocess $<
