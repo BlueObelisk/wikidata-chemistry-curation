@@ -1,6 +1,6 @@
 # Curating chemistry in Wikidata
 
-© 2025  <a href="https://orcid.org/0000-0001-7542-0286"> <img src="https://i0.wp.com/info.orcid.org/wp-content/uploads/2024/11/orcid-unauthenticated-id-icon.png?w=512&ssl=1" alt="ORCID Logo"/></a>
+© 2025  <a href="https://orcid.org/0000-0001-7542-0286">Egon Willighagen <img src="/images/ORCID-iD_icon_unauth_vector.svg" width="18" alt="ORCID Logo"/></a>
 
 License: CC-BY-SA 4.0 International
 
