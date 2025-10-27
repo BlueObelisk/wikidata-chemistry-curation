@@ -28,6 +28,7 @@ Wishes, comments, and pull requests can be send to
 6. [Comparing against databases](databases.md) <br />
 6.1. [Common Chemistry](databases.md#common-chemistry) <br />
 7. [Adding additional information](adding.md) <br />
-7.1. [Adding melting points](adding.md#adding-melting-points) <br />
+7.1. [Adding chemical compounds](adding.md#adding-chemical-compounds) <br />
+7.2. [Adding melting points](adding.md#adding-melting-points) <br />
 
 [Index](indexList.md) <br />
