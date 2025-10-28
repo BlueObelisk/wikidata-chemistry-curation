@@ -14,6 +14,8 @@ exceptions to be recorded. <!-- add example? --> For example, for the
 These reports provide both curators and users to get an idea of the status of the
 chemistry in Wikidata.
 
+For up-to-date information about properties used for chemicals: <https://www.wikidata.org/wiki/Wikidata:WikiProject_Chemistry/Properties#Up-to-date_list_of_properties_about_chemical>
+
 ## References
 
 <references/>
