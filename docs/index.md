@@ -2,7 +2,7 @@
 
 © 2025  <a href="https://orcid.org/0000-0001-7542-0286">Egon Willighagen <img src="/wikidata-chemistry-curation/images/ORCID-iD_icon_unauth_vector.svg" width="14" alt="ORCID Logo"/></a>
 
-License: CC-BY-SA 4.0 International
+License: [CC-BY-SA 4.0 International](https://creativecommons.org/licenses/by-sa/4.0/)
 
 This book is written in Markdown with additional instructions that are preprocessed.
 
@@ -15,6 +15,7 @@ Wishes, comments, and pull requests can be send to
 2. [Wikidata property constraints](constraints.md) <br />
 3. [Models of chemistry](models.md) <br />
 3.1. [Model and guidance](models.md#model-and-guidance) <br />
+3.1.1. [Wikidata guidelines](models.md#wikidata-guidelines) <br />
 3.2. [Shape expressions](models.md#shape-expressions) <br />
 3.2.1. [Chemical elements](models.md#chemical-elements) <br />
 4. [Wikidata-based curation approaches](sparql.md) <br />
