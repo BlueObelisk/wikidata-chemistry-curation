@@ -17,6 +17,7 @@ ChEBI [<a href="#citeref1">1</a>] identifiers comparison was performed as descri
 The [ChEBI ID](https://www.wikidata.org/wiki/Property:P683) property also uses [mapping relation type](https://www.wikidata.org/wiki/Property:P4390) property as qualifier.
 Most of the time, the matches are `exact match` [<a href="#citeref2">2</a>].
 <!-- TODO eventiually SPARQL to show statistics and other types of matches -->
+The script used is available at <https://github.com/Adafede/wd-curation-r/inst/scripts/wd_add_chebi_ids.R>
 
 ## Common Chemistry
 
@@ -30,13 +31,19 @@ The three scripts used to do these analyses are provided in the supplementary in
 
 TODO (I have it)
 
+The script used is available at <https://github.com/Adafede/wd-curation-r/inst/scripts/wd_add_drugbank_ids.R>
+
 ## DSSTox
 
 TODO (I have it)
 
+The script used is available at <https://github.com/Adafede/wd-curation-r/inst/scripts/wd_add_dsstox_ids.R>
+
 ## HMDB
 
 TODO (I have it)
+
+The script used is available at <https://github.com/Adafede/wd-curation-r/inst/scripts/wd_add_hmdb_ids.R>
 
 ## KNApSAcK
 
@@ -50,21 +57,31 @@ No open dump available
 
 TODO (I have it)
 
+The script used is available at <https://github.com/Adafede/wd-curation-r/inst/scripts/wd_add_npatlas_ids.R>
+
 ## PubChem
 
 TODO (I have it)
+
+The script used is available at <https://github.com/Adafede/wd-curation-r/inst/scripts/wd_add_pubchem_ids.R>
 
 ## SureChEMBL
 
 TODO (I have it)
 
+The script used is available at <https://github.com/Adafede/wd-curation-r/inst/scripts/wd_add_surechembl_ids.R>
+
 ## SwissLipids
 
 TODO (I have it)
 
+The script used is available at <https://github.com/Adafede/wd-curation-r/inst/scripts/wd_add_swisslipids_ids.R>
+
 ## Unique Ingredient Identifier (UNII)
 
 TODO (I have it)
+
+The script used is available at <https://github.com/Adafede/wd-curation-r/inst/scripts/wd_add_unii_ids.R>
 
 ## References
 
