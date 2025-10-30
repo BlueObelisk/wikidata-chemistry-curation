@@ -27,7 +27,18 @@ Wishes, comments, and pull requests can be send to
 5.1.1. [Unparsable SMILES](cheminf.md#unparsable-smiles) <br />
 5.2. [RDkit-based](cheminf.md#rdkit-based) <br />
 6. [Comparing against databases](databases.md) <br />
-6.1. [Common Chemistry](databases.md#common-chemistry) <br />
+6.1. [Chemical Entities of Biological Interest (ChEBI)](databases.md#chemical-entities-of-biological-interest-(chebi)) <br />
+6.2. [Common Chemistry](databases.md#common-chemistry) <br />
+6.3. [DrugBank](databases.md#drugbank) <br />
+6.4. [DSSTox](databases.md#dsstox) <br />
+6.5. [HMDB](databases.md#hmdb) <br />
+6.6. [KNApSAcK](databases.md#knapsack) <br />
+6.7. [nmrshiftdb2](databases.md#nmrshiftdb2) <br />
+6.8. [NP Atlas](databases.md#np-atlas) <br />
+6.9. [PubChem](databases.md#pubchem) <br />
+6.10. [SureChEMBL](databases.md#surechembl) <br />
+6.11. [SwissLipids](databases.md#swisslipids) <br />
+6.12. [Unique Ingredient Identifier (UNII)](databases.md#unique-ingredient-identifier-(unii)) <br />
 7. [Adding additional information](adding.md) <br />
 7.1. [Adding chemical compounds](adding.md#adding-chemical-compounds) <br />
 7.2. [Adding melting points](adding.md#adding-melting-points) <br />

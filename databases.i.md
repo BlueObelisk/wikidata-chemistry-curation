@@ -8,16 +8,63 @@ input for manual curation efforts, e.g. when there is an inconsistency, it is no
 the cause of the inconsistency is.
 
 This chapter covers example of these kind of checks.
+Most checks were performed using InChIKeys calculated from SMILES between records from the external database and Wikidata.
+If the chemical graph is the same (and thus the InChIKey), then external identifiers in Wikidata should also match.
+
+## Chemical Entities of Biological Interest (ChEBI)
+
+ChEBI [<cite>Q902623</cite>] identifiers comparison was performed as described above.
+The [ChEBI ID](https://www.wikidata.org/wiki/Property:P683) property also uses [mapping relation type](https://www.wikidata.org/wiki/Property:P4390) property as qualifier.
+Most of the time, the matches are `exact match` [<cite>Q39893449</cite>].
+<!-- TODO eventiually SPARQL to show statistics and other types of matches -->
 
 ## Common Chemistry
 
-One systematic comparison that was performed was with the [CAS Common Chemistry](https://commonchemistry.cas.org/)
-database [<cite>Q111987319</cite>]. Using InChIKeys calculated from SMILES, records between <topic>CAS Common Chemistry</topic>
-and Wikidata were compared. If the chemical graph is the same (and thus the InChIKey), then the CAS registry
-number in Wikidata should also match that in CAS Common Chemistry. Furthermore, because Wikidata has sitelinks
-to Wikipedia, the paper also looked at CAS registry numbers in <topic>Wikipedia</topic>. A similar effort was done for
-checking CAS registry numbers in the <topic>HMDB</topic> [<cite>Q112710355</cite>]. The three scripts used to do these
-analyses are provided in the supplementary information.
+One systematic comparison that was performed was with the [CAS Common Chemistry](https://commonchemistry.cas.org/) database [<cite>Q111987319</cite>].
+<topic>CAS Common Chemistry</topic> and Wikidata were compared, because Wikidata has sitelinks
+to <topic>Wikipedia</topic>, the paper also looked at CAS registry numbers in <topic>Wikipedia</topic>.
+A similar effort was done for checking CAS registry numbers in the <topic>HMDB</topic> [<cite>Q112710355</cite>].
+The three scripts used to do these analyses are provided in the supplementary information.
+
+## DrugBank
+
+TODO (I have it)
+
+## DSSTox
+
+TODO (I have it)
+
+## HMDB
+
+TODO (I have it)
+
+## KNApSAcK
+
+No open dump available
+
+## nmrshiftdb2
+
+No open dump available
+
+## NP Atlas
+
+TODO (I have it)
+
+## PubChem
+
+TODO (I have it)
+
+## SureChEMBL
+
+TODO (I have it)
+
+## SwissLipids
+
+TODO (I have it)
+
+## Unique Ingredient Identifier (UNII)
+
+TODO (I have it)
 
 ## References
 
