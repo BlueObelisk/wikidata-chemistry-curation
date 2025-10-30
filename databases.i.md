@@ -29,19 +29,19 @@ The three scripts used to do these analyses are provided in the supplementary in
 
 ## DrugBank
 
-TODO (I have it)
+<!-- TODO (I have it) -->
 
 The script used is available at <https://github.com/Adafede/wd-curation-r/inst/scripts/wd_add_drugbank_ids.R>
 
 ## DSSTox
 
-TODO (I have it)
+<!-- TODO (I have it) -->
 
 The script used is available at <https://github.com/Adafede/wd-curation-r/inst/scripts/wd_add_dsstox_ids.R>
 
 ## HMDB
 
-TODO (I have it)
+<!-- TODO (I have it) -->
 
 The script used is available at <https://github.com/Adafede/wd-curation-r/inst/scripts/wd_add_hmdb_ids.R>
 
@@ -55,31 +55,31 @@ No open dump available
 
 ## NP Atlas
 
-TODO (I have it)
+<!-- TODO (I have it) -->
 
 The script used is available at <https://github.com/Adafede/wd-curation-r/inst/scripts/wd_add_npatlas_ids.R>
 
 ## PubChem
 
-TODO (I have it)
+<!-- TODO (I have it) -->
 
 The script used is available at <https://github.com/Adafede/wd-curation-r/inst/scripts/wd_add_pubchem_ids.R>
 
 ## SureChEMBL
 
-TODO (I have it)
+<!-- TODO (I have it) -->
 
 The script used is available at <https://github.com/Adafede/wd-curation-r/inst/scripts/wd_add_surechembl_ids.R>
 
 ## SwissLipids
 
-TODO (I have it)
+<!-- TODO (I have it) -->
 
 The script used is available at <https://github.com/Adafede/wd-curation-r/inst/scripts/wd_add_swisslipids_ids.R>
 
 ## Unique Ingredient Identifier (UNII)
 
-TODO (I have it)
+<!-- TODO (I have it) -->
 
 The script used is available at <https://github.com/Adafede/wd-curation-r/inst/scripts/wd_add_unii_ids.R>
 
