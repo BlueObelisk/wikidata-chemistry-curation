@@ -29,7 +29,7 @@ references.qids: findCitations.groovy
 	@groovy findCitations.groovy . | grep "^Q" | sort | uniq > references.qids
 
 references.dat: references.qids references.js
-	@node references.js
+	@nodejs references.js
 
 index.md: index.i.md toc.txt createMarkdown.groovy
 	@echo "Creating $@"
