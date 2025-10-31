@@ -77,8 +77,8 @@ The script used is available at <https://github.com/Adafede/wd-curation-r/inst/s
 
 ## References
 
-1. <a name="citeref1"></a>Missing
-2. <a name="citeref2"></a>Missing
+1. <a name="citeref1"></a> ChEBI [Internet]. ELIXIR EMBL-EBI Node. Cambridge, United Kingdom: EMBL’s European Bioinformatics Institute; Available from: http://www.ebi.ac.uk/chebi
+2. <a name="citeref2"></a> exact match. 
 3. <a name="citeref3"></a> Jacobs A, Williams D, Hickey K, Patrick N, Williams AJ, Chalk S, et al. CAS Common Chemistry in 2021: Expanding Access to Trusted Chemical Information for the Scientific Community. JCIM. 2022 May 13;  doi:[10.1021/ACS.JCIM.2C00268](https://doi.org/10.1021/ACS.JCIM.2C00268) ([Scholia](https://scholia.toolforge.org/doi/10.1021/ACS.JCIM.2C00268))
 4. <a name="citeref4"></a> Wishart D, Guo A, Oler E, Wang F, Anjum A, Peters H, et al. HMDB 5.0: the Human Metabolome Database for 2022. NAR. 2022 Jan 1;50(D1):D622–31.  doi:[10.1093/NAR/GKAB1062](https://doi.org/10.1093/NAR/GKAB1062) ([Scholia](https://scholia.toolforge.org/doi/10.1093/NAR/GKAB1062))
 
