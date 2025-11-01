@@ -1,0 +1,25 @@
+# Unique value constraint report for P592: report by value
+
+SELECT
+    ?value (SAMPLE(?ct) AS ?ct)
+    (GROUP_CONCAT(DISTINCT(STRAFTER(STR(?item), "/entity/")); separator=", ") AS ?items)
+    (GROUP_CONCAT(DISTINCT(?itemLabel); separator=", ") AS ?labels)
+WHERE
+{
+  	{ 	SELECT ?value (COUNT(DISTINCT ?item) as ?ct)
+  		WHERE
+  		{
+  			?item wdt:P592 ?value
+		}
+    	GROUP BY ?value HAVING (?ct>1)
+    	ORDER BY DESC(?ct)
+    	LIMIT 100
+	}
+  	?item wdt:P592 ?value .
+	SERVICE wikibase:label {
+    	bd:serviceParam wikibase:language "en, mul" .
+    	?item rdfs:label ?itemLabel .
+  	}
+}
+GROUP BY ?value
+ORDER BY DESC(?ct)
