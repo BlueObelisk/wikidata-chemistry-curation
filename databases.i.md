@@ -17,7 +17,7 @@ ChEBI [<cite>Q902623</cite>] identifiers comparison was performed as described a
 The [ChEBI ID](https://www.wikidata.org/wiki/Property:P683) property also uses [mapping relation type](https://www.wikidata.org/wiki/Property:P4390) property as qualifier.
 Most of the time, the matches are `exact match` [<cite>Q39893449</cite>].
 <!-- TODO eventiually SPARQL to show statistics and other types of matches -->
-The script used is available at <https://github.com/Adafede/wd-curation-r/inst/scripts/wd_add_chebi_ids.R>
+The script used is available at <https://github.com/Adafede/wd-curation-r/tree/main/inst/scripts/wd_add_chebi_ids.R>
 
 ## Common Chemistry
 
@@ -30,17 +30,17 @@ The three scripts used to do these analyses are provided in the supplementary in
 ## DrugBank
 
 The same methodology as described above was used.
-The script used is available at <https://github.com/Adafede/wd-curation-r/inst/scripts/wd_add_drugbank_ids.R>
+The script used is available at <https://github.com/Adafede/wd-curation-r/tree/main/inst/scripts/wd_add_drugbank_ids.R>
 
 ## DSSTox
 
 The same methodology as described above was used.
-The script used is available at <https://github.com/Adafede/wd-curation-r/inst/scripts/wd_add_dsstox_ids.R>
+The script used is available at <https://github.com/Adafede/wd-curation-r/tree/main/inst/scripts/wd_add_dsstox_ids.R>
 
 ## HMDB
 
 The same methodology as described above was used.
-The script used is available at <https://github.com/Adafede/wd-curation-r/inst/scripts/wd_add_hmdb_ids.R>
+The script used is available at <https://github.com/Adafede/wd-curation-r/tree/main/inst/scripts/wd_add_hmdb_ids.R>
 
 ## KNApSAcK
 
@@ -53,27 +53,27 @@ No open dump available
 ## NP Atlas
 
 The same methodology as described above was used.
-The script used is available at <https://github.com/Adafede/wd-curation-r/inst/scripts/wd_add_npatlas_ids.R>
+The script used is available at <https://github.com/Adafede/wd-curation-r/tree/main/inst/scripts/wd_add_npatlas_ids.R>
 
 ## PubChem
 
 The same methodology as described above was used.
-The script used is available at <https://github.com/Adafede/wd-curation-r/inst/scripts/wd_add_pubchem_ids.R>
+The script used is available at <https://github.com/Adafede/wd-curation-r/tree/main/inst/scripts/wd_add_pubchem_ids.R>
 
 ## SureChEMBL
 
 The same methodology as described above was used.
-The script used is available at <https://github.com/Adafede/wd-curation-r/inst/scripts/wd_add_surechembl_ids.R>
+The script used is available at <https://github.com/Adafede/wd-curation-r/tree/main/inst/scripts/wd_add_surechembl_ids.R>
 
 ## SwissLipids
 
 The same methodology as described above was used.
-The script used is available at <https://github.com/Adafede/wd-curation-r/inst/scripts/wd_add_swisslipids_ids.R>
+The script used is available at <https://github.com/Adafede/wd-curation-r/tree/main/inst/scripts/wd_add_swisslipids_ids.R>
 
 ## Unique Ingredient Identifier (UNII)
 
 The same methodology as described above was used.
-The script used is available at <https://github.com/Adafede/wd-curation-r/inst/scripts/wd_add_unii_ids.R>
+The script used is available at <https://github.com/Adafede/wd-curation-r/tree/main/inst/scripts/wd_add_unii_ids.R>
 
 ## References
 
