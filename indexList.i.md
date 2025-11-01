@@ -12,7 +12,9 @@ functional groups [sparql](sparql.i.md#tp6)<br />
 HMDB [databases](databases.i.md#tp8)<br />
 InChIKey [databases](databases.i.md#tp2)<br />
 isomeric SMILES [constraints](constraints.i.md#tp2)<br />
+lipid [models](models.i.md#tp5)<br />
 MassBank accession ID [constraints](constraints.i.md#tp3)<br />
+natural product [models](models.i.md#tp6)<br />
 polymers [sparql](sparql.i.md#tp4)<br />
 property constraints [constraints](constraints.i.md#tp1)<br />
 racemic mixture [models](models.i.md#tp3)<br />
