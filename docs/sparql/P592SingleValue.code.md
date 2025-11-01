@@ -1,0 +1,344 @@
+# P592SingleValue.rq
+**Code examples:** [curl](#curl)
+### SPARQL
+```sparql
+SELECT DISTINCT ?itemLabel ?itemLabelURL ?count ?sample1 ?sample2 ?exception
+WITH {
+	SELECT ?formatter WHERE {
+		OPTIONAL { wd:P592 wdt:P1630 ?formatter }
+	} LIMIT 1
+} AS %formatter
+WHERE
+{
+	{
+		SELECT ?item (COUNT(?value) AS ?count) (MIN(?value) AS ?sample1) (MAX(?value) AS ?sample2) {
+			?item p:P592 [ ps:P592 ?val; wikibase:rank ?rank ] .
+			FILTER( ?rank != wikibase:DeprecatedRank ) .
+			INCLUDE %formatter .
+			BIND( IF( BOUND( ?formatter ), URI( REPLACE( ?formatter, '\\$1', ?val ) ), ?val ) AS ?value ) .
+		} GROUP BY ?item HAVING ( ?count > 1 ) LIMIT 100
+	} .
+	OPTIONAL {
+		wd:P592 p:P2302 [ ps:P2302 wd:Q19474404; pq:P2303 ?exc ] .
+		FILTER( ?exc = ?item ) .
+	} .
+	BIND( BOUND( ?exc ) AS ?exception ) .
+    BIND (?item AS ?itemLabelURL)
+	SERVICE wikibase:label { bd:serviceParam wikibase:language "en,mul" } .
+}
+ORDER BY DESC(?count)
+```
+[Execute](https://query.wikidata.org/embed.html#SELECT%20DISTINCT%20%3FitemLabel%20%3FitemLabelURL%20%3Fcount%20%3Fsample1%20%3Fsample2%20%3Fexception%0AWITH%20%7B%0A%09SELECT%20%3Fformatter%20WHERE%20%7B%0A%09%09OPTIONAL%20%7B%20wd%3AP592%20wdt%3AP1630%20%3Fformatter%20%7D%0A%09%7D%20LIMIT%201%0A%7D%20AS%20%25formatter%0AWHERE%0A%7B%0A%09%7B%0A%09%09SELECT%20%3Fitem%20%28COUNT%28%3Fvalue%29%20AS%20%3Fcount%29%20%28MIN%28%3Fvalue%29%20AS%20%3Fsample1%29%20%28MAX%28%3Fvalue%29%20AS%20%3Fsample2%29%20%7B%0A%09%09%09%3Fitem%20p%3AP592%20%5B%20ps%3AP592%20%3Fval%3B%20wikibase%3Arank%20%3Frank%20%5D%20.%0A%09%09%09FILTER%28%20%3Frank%20%21%3D%20wikibase%3ADeprecatedRank%20%29%20.%0A%09%09%09INCLUDE%20%25formatter%20.%0A%09%09%09BIND%28%20IF%28%20BOUND%28%20%3Fformatter%20%29%2C%20URI%28%20REPLACE%28%20%3Fformatter%2C%20%27%5C%5C%241%27%2C%20%3Fval%20%29%20%29%2C%20%3Fval%20%29%20AS%20%3Fvalue%20%29%20.%0A%09%09%7D%20GROUP%20BY%20%3Fitem%20HAVING%20%28%20%3Fcount%20%3E%201%20%29%20LIMIT%20100%0A%09%7D%20.%0A%09OPTIONAL%20%7B%0A%09%09wd%3AP592%20p%3AP2302%20%5B%20ps%3AP2302%20wd%3AQ19474404%3B%20pq%3AP2303%20%3Fexc%20%5D%20.%0A%09%09FILTER%28%20%3Fexc%20%3D%20%3Fitem%20%29%20.%0A%09%7D%20.%0A%09BIND%28%20BOUND%28%20%3Fexc%20%29%20AS%20%3Fexception%20%29%20.%0A%20%20%20%20BIND%20%28%3Fitem%20AS%20%3FitemLabelURL%29%0A%09SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22en%2Cmul%22%20%7D%20.%0A%7D%0AORDER%20BY%20DESC%28%3Fcount%29%0A) or [Edit](https://query.wikidata.org/#SELECT%20DISTINCT%20%3FitemLabel%20%3FitemLabelURL%20%3Fcount%20%3Fsample1%20%3Fsample2%20%3Fexception%0AWITH%20%7B%0A%09SELECT%20%3Fformatter%20WHERE%20%7B%0A%09%09OPTIONAL%20%7B%20wd%3AP592%20wdt%3AP1630%20%3Fformatter%20%7D%0A%09%7D%20LIMIT%201%0A%7D%20AS%20%25formatter%0AWHERE%0A%7B%0A%09%7B%0A%09%09SELECT%20%3Fitem%20%28COUNT%28%3Fvalue%29%20AS%20%3Fcount%29%20%28MIN%28%3Fvalue%29%20AS%20%3Fsample1%29%20%28MAX%28%3Fvalue%29%20AS%20%3Fsample2%29%20%7B%0A%09%09%09%3Fitem%20p%3AP592%20%5B%20ps%3AP592%20%3Fval%3B%20wikibase%3Arank%20%3Frank%20%5D%20.%0A%09%09%09FILTER%28%20%3Frank%20%21%3D%20wikibase%3ADeprecatedRank%20%29%20.%0A%09%09%09INCLUDE%20%25formatter%20.%0A%09%09%09BIND%28%20IF%28%20BOUND%28%20%3Fformatter%20%29%2C%20URI%28%20REPLACE%28%20%3Fformatter%2C%20%27%5C%5C%241%27%2C%20%3Fval%20%29%20%29%2C%20%3Fval%20%29%20AS%20%3Fvalue%20%29%20.%0A%09%09%7D%20GROUP%20BY%20%3Fitem%20HAVING%20%28%20%3Fcount%20%3E%201%20%29%20LIMIT%20100%0A%09%7D%20.%0A%09OPTIONAL%20%7B%0A%09%09wd%3AP592%20p%3AP2302%20%5B%20ps%3AP2302%20wd%3AQ19474404%3B%20pq%3AP2303%20%3Fexc%20%5D%20.%0A%09%09FILTER%28%20%3Fexc%20%3D%20%3Fitem%20%29%20.%0A%09%7D%20.%0A%09BIND%28%20BOUND%28%20%3Fexc%20%29%20AS%20%3Fexception%20%29%20.%0A%20%20%20%20BIND%20%28%3Fitem%20AS%20%3FitemLabelURL%29%0A%09SERVICE%20wikibase%3Alabel%20%7B%20bd%3AserviceParam%20wikibase%3Alanguage%20%22en%2Cmul%22%20%7D%20.%0A%7D%0AORDER%20BY%20DESC%28%3Fcount%29%0A)
+
+
+### Output
+<table>
+  <tr>
+    <td><b>itemLabelURL</b></td>
+    <td><b>count</b></td>
+    <td><b>sample1</b></td>
+    <td><b>sample2</b></td>
+    <td><b>exception</b></td>
+  </tr>
+  <tr>
+    <td>http://www.wikidata.org/entity/Q425293</td>
+    <td>2</td>
+    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3039598/</td>
+    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3306578/</td>
+    <td>false</td>
+  </tr>
+  <tr>
+    <td>http://www.wikidata.org/entity/Q4008670</td>
+    <td>2</td>
+    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL2103975/</td>
+    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL264186/</td>
+    <td>false</td>
+  </tr>
+  <tr>
+    <td>http://www.wikidata.org/entity/Q417227</td>
+    <td>2</td>
+    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL1286/</td>
+    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL150361/</td>
+    <td>false</td>
+  </tr>
+  <tr>
+    <td>http://www.wikidata.org/entity/Q420532</td>
+    <td>2</td>
+    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3039593/</td>
+    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL553025/</td>
+    <td>false</td>
+  </tr>
+  <tr>
+    <td>http://www.wikidata.org/entity/Q7784695</td>
+    <td>2</td>
+    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL10247/</td>
+    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL298827/</td>
+    <td>false</td>
+  </tr>
+  <tr>
+    <td>http://www.wikidata.org/entity/Q422301</td>
+    <td>2</td>
+    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL1201488/</td>
+    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3039582/</td>
+    <td>false</td>
+  </tr>
+  <tr>
+    <td>http://www.wikidata.org/entity/Q417219</td>
+    <td>2</td>
+    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL2079587/</td>
+    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3182301/</td>
+    <td>false</td>
+  </tr>
+  <tr>
+    <td>http://www.wikidata.org/entity/Q75830</td>
+    <td>2</td>
+    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL18041/</td>
+    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL28992/</td>
+    <td>false</td>
+  </tr>
+  <tr>
+    <td>http://www.wikidata.org/entity/Q27076606</td>
+    <td>2</td>
+    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL1627233/</td>
+    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL389014/</td>
+    <td>false</td>
+  </tr>
+  <tr>
+    <td>http://www.wikidata.org/entity/Q418611</td>
+    <td>2</td>
+    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL1292/</td>
+    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL1369407/</td>
+    <td>false</td>
+  </tr>
+  <tr>
+    <td>http://www.wikidata.org/entity/Q7699849</td>
+    <td>2</td>
+    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL1097558/</td>
+    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL1908355/</td>
+    <td>false</td>
+  </tr>
+  <tr>
+    <td>http://www.wikidata.org/entity/Q27164669</td>
+    <td>2</td>
+    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3192290/</td>
+    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL458603/</td>
+    <td>false</td>
+  </tr>
+  <tr>
+    <td>http://www.wikidata.org/entity/Q5266620</td>
+    <td>2</td>
+    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL39263/</td>
+    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL9506/</td>
+    <td>false</td>
+  </tr>
+  <tr>
+    <td>http://www.wikidata.org/entity/Q27088229</td>
+    <td>2</td>
+    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL408678/</td>
+    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL91730/</td>
+    <td>false</td>
+  </tr>
+  <tr>
+    <td>http://www.wikidata.org/entity/Q285687</td>
+    <td>2</td>
+    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL55242/</td>
+    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL553426/</td>
+    <td>false</td>
+  </tr>
+  <tr>
+    <td>http://www.wikidata.org/entity/Q27088252</td>
+    <td>2</td>
+    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3259533/</td>
+    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3265370/</td>
+    <td>false</td>
+  </tr>
+  <tr>
+    <td>http://www.wikidata.org/entity/Q410298</td>
+    <td>2</td>
+    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL356431/</td>
+    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL938/</td>
+    <td>false</td>
+  </tr>
+  <tr>
+    <td>http://www.wikidata.org/entity/Q421369</td>
+    <td>2</td>
+    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL1201187/</td>
+    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL584744/</td>
+    <td>false</td>
+  </tr>
+  <tr>
+    <td>http://www.wikidata.org/entity/Q419841</td>
+    <td>2</td>
+    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL1189679/</td>
+    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL1276421/</td>
+    <td>false</td>
+  </tr>
+  <tr>
+    <td>http://www.wikidata.org/entity/Q27076690</td>
+    <td>2</td>
+    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL147763/</td>
+    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL358725/</td>
+    <td>false</td>
+  </tr>
+  <tr>
+    <td>http://www.wikidata.org/entity/Q415220</td>
+    <td>2</td>
+    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL1201258/</td>
+    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL225072/</td>
+    <td>false</td>
+  </tr>
+  <tr>
+    <td>http://www.wikidata.org/entity/Q14200353</td>
+    <td>2</td>
+    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL1778156/</td>
+    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL2110756/</td>
+    <td>false</td>
+  </tr>
+  <tr>
+    <td>http://www.wikidata.org/entity/Q425027</td>
+    <td>2</td>
+    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL1481/</td>
+    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL149223/</td>
+    <td>false</td>
+  </tr>
+  <tr>
+    <td>http://www.wikidata.org/entity/Q418086</td>
+    <td>2</td>
+    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL1616433/</td>
+    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL1650818/</td>
+    <td>false</td>
+  </tr>
+  <tr>
+    <td>http://www.wikidata.org/entity/Q15634083</td>
+    <td>2</td>
+    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL285913/</td>
+    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL588593/</td>
+    <td>false</td>
+  </tr>
+  <tr>
+    <td>http://www.wikidata.org/entity/Q425295</td>
+    <td>2</td>
+    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL1729/</td>
+    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL560739/</td>
+    <td>false</td>
+  </tr>
+  <tr>
+    <td>http://www.wikidata.org/entity/Q27076721</td>
+    <td>2</td>
+    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL565305/</td>
+    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL567470/</td>
+    <td>false</td>
+  </tr>
+  <tr>
+    <td>http://www.wikidata.org/entity/Q5259281</td>
+    <td>2</td>
+    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL1569195/</td>
+    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL493682/</td>
+    <td>false</td>
+  </tr>
+  <tr>
+    <td>http://www.wikidata.org/entity/Q27077200</td>
+    <td>2</td>
+    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL298517/</td>
+    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL298826/</td>
+    <td>false</td>
+  </tr>
+  <tr>
+    <td>http://www.wikidata.org/entity/Q4631298</td>
+    <td>2</td>
+    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3218924/</td>
+    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL422904/</td>
+    <td>false</td>
+  </tr>
+  <tr>
+    <td>http://www.wikidata.org/entity/Q422538</td>
+    <td>2</td>
+    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL78/</td>
+    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL95606/</td>
+    <td>false</td>
+  </tr>
+  <tr>
+    <td>http://www.wikidata.org/entity/Q2482223</td>
+    <td>2</td>
+    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL207538/</td>
+    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL38856/</td>
+    <td>false</td>
+  </tr>
+  <tr>
+    <td>http://www.wikidata.org/entity/Q21098973</td>
+    <td>2</td>
+    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL2364640/</td>
+    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3545184/</td>
+    <td>false</td>
+  </tr>
+  <tr>
+    <td>http://www.wikidata.org/entity/Q29428</td>
+    <td>2</td>
+    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL496980/</td>
+    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL56564/</td>
+    <td>false</td>
+  </tr>
+  <tr>
+    <td>http://www.wikidata.org/entity/Q32904692</td>
+    <td>2</td>
+    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL336296/</td>
+    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL605653/</td>
+    <td>false</td>
+  </tr>
+  <tr>
+    <td>http://www.wikidata.org/entity/Q390566</td>
+    <td>2</td>
+    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3775234/</td>
+    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL437472/</td>
+    <td>false</td>
+  </tr>
+  <tr>
+    <td>http://www.wikidata.org/entity/Q7558263</td>
+    <td>2</td>
+    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL1232510/</td>
+    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL1240704/</td>
+    <td>false</td>
+  </tr>
+  <tr>
+    <td>http://www.wikidata.org/entity/Q4132745</td>
+    <td>2</td>
+    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL1197091/</td>
+    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL1199540/</td>
+    <td>false</td>
+  </tr>
+  <tr>
+    <td>http://www.wikidata.org/entity/Q426921</td>
+    <td>2</td>
+    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL269671/</td>
+    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL77/</td>
+    <td>false</td>
+  </tr>
+  <tr>
+    <td>http://www.wikidata.org/entity/Q15409437</td>
+    <td>2</td>
+    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL197027/</td>
+    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL268697/</td>
+    <td>false</td>
+  </tr>
+  <tr>
+    <td>http://www.wikidata.org/entity/Q190016</td>
+    <td>2</td>
+    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL1909300/</td>
+    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL526514/</td>
+    <td>false</td>
+  </tr>
+  <tr>
+    <td>http://www.wikidata.org/entity/Q906271</td>
+    <td>2</td>
+    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL1201534/</td>
+    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL1201684/</td>
+    <td>false</td>
+  </tr>
+</table>
+## Code examples
+### curl
+```shell
+curl -o P592SingleValue.rq https://raw.githubusercontent.com/egonw/SARS-CoV-2-Queries/master/sparql/P592SingleValue.rq
+curl -H "Accept: text/tab-separated-values" -G https://query.wikidata.org/bigdata/namespace/wdq/sparql --data-urlencode query@P592SingleValue.rq
+```
+This SPARQL query is available under CCZero.
