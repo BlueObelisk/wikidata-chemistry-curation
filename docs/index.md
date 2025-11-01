@@ -14,6 +14,8 @@ Wishes, comments, and pull requests can be send to
 
 1. [Introduction](intro.md) <br />
 2. [Wikidata property constraints](constraints.md) <br />
+2.1. [Single value](constraints.md#single-value) <br />
+2.2. [Uniqe value](constraints.md#uniqe-value) <br />
 3. [Models of chemistry](models.md) <br />
 3.1. [Model and guidance](models.md#model-and-guidance) <br />
 3.1.1. [Wikidata guidelines](models.md#wikidata-guidelines) <br />

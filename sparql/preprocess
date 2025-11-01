@@ -53,7 +53,7 @@ for (i=1;i<=results.rowCount;i++) {
       qidURL = results.get(i, wikidata)
       if (qidURL.startsWith("http://www.wikidata.org/")) {
         qid = qidURL.substring(31)
-        println "    <td><a href=\"https://tools.wmflabs.org/scholia/$qid\">${results.get(i, label)}</a> (<a href=\"$qidURL\">edit</a>)</td>"
+        println "    <td><a href=\"https://scholia.toolforge.org/$qid\">${results.get(i, label)}</a> (<a href=\"$qidURL\">edit</a>)</td>"
       } else {
         if (label == null) label = ""
         println "    <td>$label</td>"

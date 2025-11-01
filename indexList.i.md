@@ -3,6 +3,7 @@
 
 bioling points [adding](adding.i.md#tp2)<br />
 CAS Common Chemistry [databases](databases.i.md#tp5)<br />
+ChEMBL ID [constraints](constraints.i.md#tp4)<br />
 chemical element [models](models.i.md#tp2)<br />
 chemical graph [databases](databases.i.md#tp1)<br />
 Chemistry Development Kit [cheminf](cheminf.i.md#tp2)<br />

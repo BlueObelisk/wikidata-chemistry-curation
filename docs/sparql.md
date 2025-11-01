@@ -46,19 +46,19 @@ The results look like this:
     <td><b>item</b></td>
   </tr>
   <tr>
-    <td>http://dbpedia.org/resource/Manganese_germanide</td>
-    <td>https://en.wikipedia.org/wiki/Manganese_germanide</td>
-    <td><a href="https://tools.wmflabs.org/scholia/Q97933222">Manganese germanide</a> (<a href="http://www.wikidata.org/entity/Q97933222">edit</a>)</td>
+    <td>http://dbpedia.org/resource/Globo_H</td>
+    <td>https://en.wikipedia.org/wiki/Globo_H</td>
+    <td><a href="https://tools.wmflabs.org/scholia/Q105973358">Globo H</a> (<a href="http://www.wikidata.org/entity/Q105973358">edit</a>)</td>
   </tr>
   <tr>
-    <td>http://dbpedia.org/resource/Potassium_octacyanomolybdate(IV)</td>
-    <td>https://en.wikipedia.org/wiki/Potassium_octacyanomolybdate(IV)</td>
-    <td><a href="https://tools.wmflabs.org/scholia/Q98078085">Potassium octacyanomolybdate(IV)</a> (<a href="http://www.wikidata.org/entity/Q98078085">edit</a>)</td>
+    <td>http://dbpedia.org/resource/Dysprosium_stannate</td>
+    <td>https://en.wikipedia.org/wiki/Dysprosium_stannate</td>
+    <td><a href="https://tools.wmflabs.org/scholia/Q106196296">dysprosium stannate</a> (<a href="http://www.wikidata.org/entity/Q106196296">edit</a>)</td>
   </tr>
   <tr>
-    <td>http://dbpedia.org/resource/Vanadium(V)_chloride_chlorimide</td>
-    <td>https://en.wikipedia.org/wiki/Vanadium(V)_chloride_chlorimide</td>
-    <td><a href="https://tools.wmflabs.org/scholia/Q100341984">vanadium(V) chloride chlorimide</a> (<a href="http://www.wikidata.org/entity/Q100341984">edit</a>)</td>
+    <td>http://dbpedia.org/resource/Copper_oxide_selenite</td>
+    <td>https://en.wikipedia.org/wiki/Copper_oxide_selenite</td>
+    <td><a href="https://tools.wmflabs.org/scholia/Q106435354">copper oxide selenite</a> (<a href="http://www.wikidata.org/entity/Q106435354">edit</a>)</td>
   </tr>
   <tr><td colspan="2"><a href="sparql/missingSMILES.code.html">sparql/missingSMILES.rq</a></td></tr>
 </table>
