@@ -42,6 +42,7 @@ Wishes, comments, and pull requests can be send to
 6.12. [Unique Ingredient Identifier (UNII)](databases.md#unique-ingredient-identifier-(unii)) <br />
 7. [Adding additional information](adding.md) <br />
 7.1. [Adding chemical compounds](adding.md#adding-chemical-compounds) <br />
-7.2. [Adding melting points](adding.md#adding-melting-points) <br />
+7.2. [Melting points](adding.md#melting-points) <br />
+7.3. [Boiling points](adding.md#boiling-points) <br />
 
 [Index](indexList.md) <br />
