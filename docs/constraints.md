@@ -173,24 +173,10 @@ This gives this list of Wikidata items with more than one ChEMBL ID:
     <td>false</td>
   </tr>
   <tr>
-    <td>http://www.wikidata.org/entity/Q417219</td>
+    <td>http://www.wikidata.org/entity/Q417227</td>
     <td>2</td>
-    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL2079587/</td>
-    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3182301/</td>
-    <td>false</td>
-  </tr>
-  <tr>
-    <td>http://www.wikidata.org/entity/Q75830</td>
-    <td>2</td>
-    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL18041/</td>
-    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL28992/</td>
-    <td>false</td>
-  </tr>
-  <tr>
-    <td>http://www.wikidata.org/entity/Q422301</td>
-    <td>2</td>
-    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL1201488/</td>
-    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3039582/</td>
+    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL1286/</td>
+    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL150361/</td>
     <td>false</td>
   </tr>
   <tr>
@@ -208,10 +194,24 @@ This gives this list of Wikidata items with more than one ChEMBL ID:
     <td>false</td>
   </tr>
   <tr>
-    <td>http://www.wikidata.org/entity/Q417227</td>
+    <td>http://www.wikidata.org/entity/Q422301</td>
     <td>2</td>
-    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL1286/</td>
-    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL150361/</td>
+    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL1201488/</td>
+    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3039582/</td>
+    <td>false</td>
+  </tr>
+  <tr>
+    <td>http://www.wikidata.org/entity/Q417219</td>
+    <td>2</td>
+    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL2079587/</td>
+    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL3182301/</td>
+    <td>false</td>
+  </tr>
+  <tr>
+    <td>http://www.wikidata.org/entity/Q75830</td>
+    <td>2</td>
+    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL18041/</td>
+    <td>https://www.ebi.ac.uk/chembl/compound_report_card/CHEMBL28992/</td>
     <td>false</td>
   </tr>
   <tr><td colspan="2"><a href="sparql/P592SingleValue.code.html">sparql/P592SingleValue.rq</a></td></tr>
